@@ -71,6 +71,7 @@ target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
+*.ipynb
 
 # pyenv
 .python-version
@@ -104,4 +105,11 @@ venv.bak/
 .mypy_cache/
 
 # Authentication files
-*credentials.json
+*credentials.py
+
+# conda
+*environment.yml
+
+# VS Code
+*.code-workspace
+.vscode
