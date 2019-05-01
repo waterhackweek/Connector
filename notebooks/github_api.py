@@ -65,8 +65,7 @@ for repo in g.get_user("deppen8").get_repos()[0:10]:
 # To get repos not including forks, use the following:
 
 for repo in g.get_user("deppen8").get_repos():
-    if repo.fork == False:
+    if repo.fork is False:
         for person in repo.get_contributors():
             print(person.login)
-
 
