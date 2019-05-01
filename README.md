@@ -21,7 +21,7 @@ The ERC-citations tool uses a bibtex file input to construct the network. There 
 - any resources that *don't* have an easy bibtex form will have to be translated programmatically to bibtex, which could be difficult to standardize
 - makes it more complicated to include entities like "Waterhackweek" as centralized nodes
 
-## Data flow
+## Data
 
 Users' information will be captured through some channel (online form, Waterhackweek application, etc.). This information will include:
 
@@ -53,3 +53,32 @@ Like GitHub, ORCID already has a public API that can be queried Python. There is
 ### HydroShare
 
 HydroShare also has an API and a [Python client](https://hs-restclient.readthedocs.io/en/latest/) that will allow for easier extraction of a user's HydroShare Resources and collaborators.
+
+## Database
+
+### SQLite specification
+
+```sql
+CREATE TABLE members (
+  member_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+  member_name TEXT
+);
+
+CREATE TABLE usernames (
+  username_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+  username TEXT NOT NULL,
+  username_type TEXT,
+  member_id INTEGER,
+  FOREIGN KEY(member_id) REFERENCES members(member_id)
+);
+
+CREATE TABLE cxns (
+  cxn_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+  person1 TEXT NOT NULL,
+  person2 TEXT NOT NULL,
+  cxn_source TEXT NOT NULL,
+  cxn_type TEXT NOT NULL,
+  FOREIGN KEY(person1, cxn_source) REFERENCES usernames(username, username_type),
+  FOREIGN KEY(person2, cxn_source) REFERENCES usernames(username, username_type)
+);
+```
