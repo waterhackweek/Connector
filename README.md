@@ -48,7 +48,9 @@ There are a number of Python wrappers for the GitHub API ([https://developer.git
 
 ### ORCID
 
-Like GitHub, ORCID already has a public API that can be queried Python. There is even a [Python wrapper for the ORCID API](https://github.com/ORCID/python-orcid) that should make things easier.
+Like GitHub, ORCID already has a public API that can be queried with Python. There is even a [Python wrapper for the ORCID API](https://github.com/ORCID/python-orcid) that should make things easier.
+
+However, ORCID requires user permission, even for read-only
 
 ### HydroShare
 
@@ -82,3 +84,7 @@ CREATE TABLE cxns (
   FOREIGN KEY(person2, cxn_source) REFERENCES usernames(username, username_type)
 );
 ```
+
+## Web interface
+
+Might be easiest if we separate the 
