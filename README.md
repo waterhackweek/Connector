@@ -84,7 +84,3 @@ CREATE TABLE cxns (
   FOREIGN KEY(person2, cxn_source) REFERENCES usernames(username, username_type)
 );
 ```
-
-## Web interface
-
-Might be easiest if we separate the 
