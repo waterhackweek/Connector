@@ -1,4 +1,4 @@
-# Freshwater Connect
+# Connector
 
 Freshwater Connect is a tool to visualize and summarize connections between researchers in the hydrologic sciences.
 
