@@ -1,6 +1,6 @@
 # Connector
 
-Freshwater Connect is a tool to visualize and summarize connections between researchers in the hydrologic sciences.
+The Freshwater Waterhackweek Connector is a tool to visualize and summarize connections between researchers in the hydrologic sciences.
 
 This project is currently in the planning and early development phase.
 
