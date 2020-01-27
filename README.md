@@ -32,6 +32,21 @@ Users' information will be captured through some channel (online form, Waterhack
 
 These inputs should be stored in a database table for `Users`. The usernames can be used to make API calls to GitHub, ORCID, and HydroShare to retrieve further information.
 
+## Issues
+Any feedback on the Connector is welcome!
+
+Please post your review on the connector as a Github Issue in the following Q/A format:
+
+Question 1
+Is the visualization intuitive ? Can you interact with all the individual elements ?
+
+Question 2
+Is there something that is not working ?
+
+Question 3
+Any suggestions that can enhance the visualization ?
+
+
 ### GitHub username
 
 GitHub has a fully-featured API that should allow for the following information to be retrieved for any given user:
