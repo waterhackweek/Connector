@@ -3,6 +3,7 @@
 The Freshwater Waterhackweek Connector is a tool to visualize and summarize connections between researchers in the hydrologic sciences.
 
 This project is currently in the planning and early development phase.
+Link to the visualization : https://public.tableau.com/profile/madhavi.srinivasan#!/vizhome/Freshwater_Connector/Sheet1
 
 ## Big picture
 
