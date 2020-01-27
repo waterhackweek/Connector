@@ -37,13 +37,13 @@ Any feedback on the Connector is welcome!
 
 Please post your review on the connector as a Github Issue in the following Q/A format:
 
-Question 1
+- Question 1
 Is the visualization intuitive ? Can you interact with all the individual elements ?
 
-Question 2
+- Question 2
 Is there something that is not working ?
 
-Question 3
+- Question 3
 Any suggestions that can enhance the visualization ?
 
 
