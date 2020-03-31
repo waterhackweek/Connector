@@ -80,6 +80,7 @@ def create_journal_edges(author_map, list_of_collaborations):
 
 
 # Go through the github repo list and create Author objects
+# Assumptions: This module assumes that all the project repos that were worked on during Waterhackweek begin with 'whw'
 def create_github_edges(author_map):
     for repo in g.get_user("waterhackweek").get_repos():
         if "feedstock" not in repo.name:
@@ -103,6 +104,7 @@ def create_github_edges(author_map):
             pass
 
 
+# Assumptions: This module assumes that all the resources were created under the group 'Waterhackweek 2019'
 def create_hydroshare_edges(hs, author_map):
     for res in hs.resources(group="Waterhackweek 2019", public=True):
         if len(res['authors']) > 1:

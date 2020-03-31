@@ -11,3 +11,12 @@ The `.ipynb` notebook file extension is added to the `.gitignore` file so that i
 ## Credentials
 
 Because credentials are so important to all of the API calls, they need to be present in the directory. Here, they are stored in `credentials.py`, which is *not* tracked by version control.
+
+## Name Reconcilation
+
+Since the data for this network was sourced from different sources, Github, Hydroshare and Bibtex files, there was an issue of the same person having multiple names across different data channels. This was done by reconciling the names using the Python FuzzyWuzzy package. This package uses "Levenshtein Distance" to figure out how similar two strings are.
+
+
+## Network Layout Coordinates
+
+To create any network visualization in Tableau, 
