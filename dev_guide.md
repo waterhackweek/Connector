@@ -14,9 +14,9 @@ Because credentials are so important to all of the API calls, they need to be pr
 
 ## Name Reconcilation
 
-Since the data for this network was sourced from different sources, Github, Hydroshare and Bibtex files, there was an issue of the same person having multiple names across different data channels. This was done by reconciling the names using the Python FuzzyWuzzy package. This package uses "Levenshtein Distance" to figure out how similar two strings are.
+Since the data for this network was sourced from different sources, Github, Hydroshare and Bibtex files, there was an issue of the same person having multiple names across different data channels. This was done by reconciling the names using the Python [FuzzyWuzzy](https://pypi.org/project/fuzzywuzzy/) package. This package uses [Levenshtein Distance](https://en.wikipedia.org/wiki/Levenshtein_distance) to figure out how similar two strings are.
 
 
 ## Network Layout Coordinates
 
-To create any network visualization in Tableau, 
+To create any network visualization in Tableau, one needs to supply the X and Y coordinates for each node plotted on the network. This is generated using the [Fruchterman Reingold layout](https://en.wikipedia.org/wiki/Force-directed_graph_drawing), using the NetworkX python package.
