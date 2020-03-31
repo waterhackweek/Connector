@@ -114,6 +114,9 @@ venv.bak/
 *.code-workspace
 .vscode
 
+# Idea project files
+.idea
+
 # OS generated files
 .DS_Store
 .DS_Store?

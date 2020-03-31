@@ -3,7 +3,7 @@
 The Freshwater Waterhackweek Connector is a tool to visualize and summarize connections between researchers in the hydrologic sciences.
 
 This project is currently in the planning and early development phase.
-Link to the visualization : https://public.tableau.com/profile/madhavi.srinivasan#!/vizhome/Freshwater_Connector/Sheet1
+Link to the visualization : https://public.tableau.com/profile/christina.bandaragoda#!/vizhome/Freshwater_Connector_2019_prototype/Sheet1
 
 ## Big picture
 
@@ -31,7 +31,7 @@ Users' information will be captured through some channel (online form, Waterhack
 - ORCID
 - HydroShare username
 
-These inputs should be stored in a database table for `Users`. The usernames can be used to make API calls to GitHub, ORCID, and HydroShare to retrieve further information.
+This information will be procured using the respective APIs for Github and Hydroshare, and by parsing through the bibtex file containing journal and paper publications of the WHW participants.
 
 ## Issues
 Any feedback on the Connector is welcome!
@@ -74,31 +74,15 @@ However, ORCID requires user permission, even for read-only
 
 HydroShare also has an API and a [Python client](https://hs-restclient.readthedocs.io/en/latest/) that will allow for easier extraction of a user's HydroShare Resources and collaborators.
 
+### Paper Publications
+
+Most of the paper and journal publications are present in the form of bibtex files, which can be easily parsed using the [Bibtexparser](https://bibtexparser.readthedocs.io/en/master/). 
+
 ## Database
 
-### SQLite specification
+Currently, the data generated for the visualization in Tableau consists of the following tables :
 
-```sql
-CREATE TABLE members (
-  member_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-  member_name TEXT
-);
-
-CREATE TABLE usernames (
-  username_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-  username TEXT NOT NULL,
-  username_type TEXT,
-  member_id INTEGER,
-  FOREIGN KEY(member_id) REFERENCES members(member_id)
-);
-
-CREATE TABLE cxns (
-  cxn_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-  person1 TEXT NOT NULL,
-  person2 TEXT NOT NULL,
-  cxn_source TEXT NOT NULL,
-  cxn_type TEXT NOT NULL,
-  FOREIGN KEY(person1, cxn_source) REFERENCES usernames(username, username_type),
-  FOREIGN KEY(person2, cxn_source) REFERENCES usernames(username, username_type)
-);
+```SQLITE
+WHW_XY (Person, X-coordinate, Y-coordinate)
+WHW_edge_collabs (Person1, Person2, Link, Collaboration)
 ```
