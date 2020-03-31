@@ -78,6 +78,21 @@ HydroShare also has an API and a [Python client](https://hs-restclient.readthedo
 
 Most of the paper and journal publications are present in the form of bibtex files, which can be easily parsed using the [Bibtexparser](https://bibtexparser.readthedocs.io/en/master/). 
 
+## Run the Connector (for Waterhackweek Participants Organization)
+
+1. 
+> git clone https://github.com/waterhackweek/Connector.git
+
+2. 
+Github Profile
+Settings/Developer Settings/Personal Access Token 
+Select Scope by checking repo: Full control of private repositories
+Generate token
+Copy token to file to a safe place NOT in Github directory
+
+3. HydroShare UserID and Password
+
+
 ## Database
 
 Currently, the data generated for the visualization in Tableau consists of the following tables :
