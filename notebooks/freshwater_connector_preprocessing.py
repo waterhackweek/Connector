@@ -1,13 +1,7 @@
 import bibtexparser
 from github import Github
 import pandas as pd
-from pyvis.network import Network
-from pyvis.options import EdgeOptions
 import networkx as nx
-import json
-import matplotlib.pyplot as plt
-import holoviews as hv
-from holoviews import opts
 from fuzzywuzzy import fuzz
 
 
@@ -15,85 +9,78 @@ HS_USERNAME = ""
 HS_PASSWORD = ""
 GITHUB_KEY = ""
 
-
 '''
 This file creates two csv files to be uploaded to Tableau to create the connector visualization
-
-WHW_edge_collabs_parse : This file contains each connection and also how they are linked and a link to the resource
+WHW_edge_collabs : This file contains each connection and also how they are linked and a link to the resource
 WHW_XY : This file contains the X and Y coordinates required to place each node ont he visualization
-
-
-
 '''
 
-class Journal:
-    def __init__(self,year,title,authors,journal=None,doi=None):
+
+class Collaboration:
+    def __init__(self, year, title, authors, medium=None, doi=None):
         self.year = year
         self.title = title
-        self.doi = doi
-        self.journal = journal
         self.authors = authors
-        
+        self.medium = medium
+        self.doi = doi
+
     def __repr__(self):
-        return "<year:%s title:%s doi:%s journal:%s authors:%s>" % (self.year, self.title,self.doi,self.journal,self.authors)
+        return "<year:%s title:%s doi:%s medium:%s authors:%s>" % (self.year, self.title, self.doi, self.medium, self.authors)
     
 
 class Author:
-    
-    def __init__(self,name,journals):
+    def __init__(self, name, collaborations):
         self.name = name
-        self.journals = journals
+        self.collaborations = collaborations
     
     def __repr__(self):
-        return "<name:%s journals:%s" % (self.name, self.journals)
+        return "<name:%s collaborations:%s" % (self.name, self.collaborations)
 
 
-
-#Go through bib file and create Journal objects
-def populate_journals():
-    
-    journal_list = []
+# Go through bib file and create Collaboration objects for journals
+def populate_collaborations():
+    collaboration_list = list()
     for item in bib_database.entries:
-        title = item["title"].replace("{" , "").replace("}" , "")
+        title = item["title"].replace("{", "").replace("}", "")
         
         if 'doi' in item.keys():
-            if 'journal' in item.keys():
-                j = Journal(item["year"],title,item["author"],item["journal"],item["doi"])
+            if 'medium' in item.keys():
+                j = Collaboration(item["year"], title, item["author"], item["medium"], item["doi"])
             else:
-                j = Journal(item["year"],title,item["author"],item["doi"])
+                j = Collaboration(item["year"], title, item["author"], None, item["doi"])
         else:
-            if 'journal' in item.keys():
-                j = Journal(item["year"],title,item["author"],item["journal"])
+            if 'medium' in item.keys():
+                j = Collaboration(item["year"], title, item["author"], item["medium"])
             else:
-                j = Journal(item["year"],title,item["author"])
+                j = Collaboration(item["year"], title, item["author"])
             
-        journal_list.append(j)
-    return journal_list
+        collaboration_list.append(j)
+    return collaboration_list
 
 
-# Go through the journal list and create Author objects
-def create_journal_edges(author_map,list_of_journals):
-    adj_list = {}
-    author_str = ""
-    for j in list_of_journals:
-        authors_str = j.authors
+# Go through the collaboration list and create Author objects
+def create_collaboration_edges(author_map, author_list, collaboration):
+    for a in author_list:
+        if a in author_map.keys():
+            author_obj = author_map[a]
+            author_obj.collaborations.append(collaboration)
+        else:
+            collab_list = list()
+            collab_list.append(collaboration)
+            author_obj = Author(a, collab_list)
+            author_map[a] = author_obj
+
+
+# Go through the collaboration list and create Author objects
+def create_journal_edges(author_map, list_of_collaborations):
+    for collaboration in list_of_collaborations:
+        authors_str = collaboration.authors
         split_authors = authors_str.split(" and ")
-        for a in split_authors:
-            if a in author_map.keys():
-                a_obj = author_map[a]
-                a_obj.journals.append(j)     
-            else:
-                j_list = []
-                j_list.append(j)
-                a_obj = Author(a,j_list)
-                author_map[a] = a_obj
-    return author_map
+        create_collaboration_edges(author_map, split_authors, collaboration)
 
 
 # Go through the github repo list and create Author objects
 def create_github_edges(author_map):
-    
-    repo_list = []
     for repo in g.get_user("waterhackweek").get_repos():
         if "feedstock" not in repo.name:
             if repo.name[:3] == 'whw':
@@ -109,22 +96,12 @@ def create_github_edges(author_map):
                         collabs += person.login + " and "    
                     
                 collabs = collabs[:-5]
-                j = Journal(year,title,collabs,"Github",doi)
+                collaboration = Collaboration(year, title, collabs, "Github", doi)
                 split_authors = collabs.split(" and ")
-                for a in split_authors:
-                    if a in author_map.keys():
-                        a_obj = author_map[a]
-                        a_obj.journals.append(j)
-                    else:
-                        j_list = []
-                        j_list.append(j)
-                        a_obj = Author(a,j_list)
-                        author_map[a] = a_obj
-                            
-                
+                create_collaboration_edges(author_map, split_authors, collaboration)
         else:
             pass
-    return author_map
+
 
 def create_hydroshare_edges(hs, author_map):
     for res in hs.resources(group="Waterhackweek 2019", public=True):
@@ -136,41 +113,34 @@ def create_hydroshare_edges(hs, author_map):
             collabs = ""
             contributors_list = res['authors']
             for person in contributors_list:
-                collabs += person + " and " 
+                collabs += person + " and "
             collabs = collabs[:-5]
-            j = Journal(year,title, collabs, "Hydroshare", doi)
-            for a in res["authors"]:
-                if a in author_map.keys():
-                        a_obj = author_map[a]
-                        a_obj.journals.append(j)
-                else:
-                        j_list = []
-                        j_list.append(j)
-                        a_obj = Author(a,j_list)
-                        author_map[a] = a_obj
-    return author_map
+            collaboration = Collaboration(year, title, collabs, "Hydroshare", doi)
+            create_collaboration_edges(author_map, res["authors"], collaboration)
+
 
 def create_neighborhood_map(author_map): 
     neighbor_map = {}
     edges_map = {}
     for key in author_map.keys():
         collab_authors = set()
-        for item in range(len(author_map[key].journals)):
-            collabs = author_map[key].journals[item].authors
+        for item in range(len(author_map[key].collaborations)):
+            collabs = author_map[key].collaborations[item].authors
             collab_list = collabs.split(" and ")
             for c in collab_list:
                 if c != key:
                     collab_authors.add(c)
-                    doi = author_map[key].journals[item].doi
+                    doi = author_map[key].collaborations[item].doi
                     if doi is None:
                         doi = ""
-                    elif author_map[key].journals[item].journal == 'Github':
+                    elif author_map[key].collaborations[item].medium == 'Github':
                         doi = "https://github.com/" + doi
-                    elif author_map[key].journals[item].journal != 'Hydroshare':
+                    elif author_map[key].collaborations[item].medium != 'Hydroshare':
                         doi = "https://doi.org/" + doi
                     edges_map[key + "<->" + c] = doi
         neighbor_map[key] = collab_authors
     return neighbor_map, edges_map
+
 
 from hs_restclient import HydroShare, HydroShareAuthBasic
 auth = HydroShareAuthBasic(username=HS_USERNAME, password=HS_PASSWORD)
@@ -180,24 +150,21 @@ g = Github(GITHUB_KEY)
 
 with open('bibfile_small.bib') as bibtex_file:
     bib_database = bibtexparser.load(bibtex_file)
-list_of_journals = populate_journals()
+list_of_journals = populate_collaborations()
 author_map = {}
-author_map = create_journal_edges(author_map,list_of_journals)
-author_map = create_github_edges(author_map)
-author_map = create_hydroshare_edges(hs, author_map)
+create_journal_edges(author_map, list_of_journals)
+create_github_edges(author_map)
+create_hydroshare_edges(hs, author_map)
 neighbor_map, edges_map = create_neighborhood_map(author_map)
-
-
 key_list = []
 for key in neighbor_map.keys():
     key_list.append(key)
 
 # sort_ratio_dict creates a dictionary like (Name1, Name2) : <val>
 # val is the similarity ratio between Name1 and Name2
-
 sort_ratio_dict = {}
 for i in range(len(key_list) - 1):
-    for j in range(i+1,len(key_list)):
+    for j in range(i+1, len(key_list)):
         sort_ratio_dict[(key_list[i], key_list[j])] = fuzz.token_sort_ratio(key_list[i],key_list[j])
 
 
@@ -242,8 +209,7 @@ for key in neighbor_map.keys():
     else:
         neighbor_mapping[new_key] = val
 
-
-#Modify keys in the edges_map in the same way
+# Modify keys in the edges_map in the same way
 edges_mapping = {}
 for key in edges_map.keys():
     val = edges_map[key]
@@ -269,37 +235,31 @@ for key in edges_map.keys():
         edges_mapping[new_key] = [val]
 
 # Store the neighbor map in a csv file
-
 neighbordf = pd.DataFrame(columns=["Person1", "Person2", "Link", "Collaboration"])
 
 for key in neighbor_mapping.keys():
     neighbor_set = neighbor_mapping[key]
     for neighbor in neighbor_set:
-        #print(key + "<->" + neighbor)
+        print(key + "<->" + neighbor)
         link = edges_mapping.get(key + "<->" + neighbor)
-        #print(link)
-        if len(link[0]) == 0 or link is None:
-            #print(key)
-            #print(neighbor)
+        print(link)
+        if len(link[0]) == 0 or link is None or link is '':
             continue
         if "github" in link[0]:
             collab = "Github"
-            
         elif "hydroshare" in link[0]:
             collab = "Hydroshare"
         else:
-            collab = "Journal" 
-        #if len(link[0]) == 0:
-            #print("appending")
-neighbordf = neighbordf.append({"Person1" : key, "Person2" : neighbor, "Link" : link, "Collaboration" : collab}, ignore_index=True)
+            collab = "Journal"
+    neighbordf = neighbordf.append({"Person1": key, "Person2": neighbor, "Link": link, "Collaboration": collab}, ignore_index=True)
 
-neighbordf.to_csv("WHW_edge_collabs_parse4.csv")
+neighbordf.to_csv("WHW_edge_collabs.csv")
 
 # Create a csv file for X and Y coordinates
 
-G=nx.Graph()
+G = nx.Graph()
 
-for key,val in neighbor_mapping.items():
+for key, val in neighbor_mapping.items():
     src = key
     dest_items = val
     for dest in dest_items:
@@ -307,7 +267,7 @@ for key,val in neighbor_mapping.items():
         G.add_node(dest)
         G.add_edge(src, dest)
 
-pos = nx.layout.fruchterman_reingold_layout(G, center=[20,20])
+pos = nx.layout.fruchterman_reingold_layout(G, center=[20, 20])
 
 name = []
 X = []
@@ -318,13 +278,13 @@ for key in pos:
     X.append(val[0])
     Y.append(val[1])
 
-df = {}
+df = dict()
 df['Name'] = name
 df['X'] = X
 df['Y'] = Y
 data_XY = pd.DataFrame(df)
 
-data_XY.to_csv("WHW_XY4_20.csv")
+data_XY.to_csv("WHW_XY.csv")
 
 
 

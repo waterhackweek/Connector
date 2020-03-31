@@ -113,3 +113,7 @@ venv.bak/
 # VS Code
 *.code-workspace
 .vscode
+
+# OS generated files
+.DS_Store
+.DS_Store?
