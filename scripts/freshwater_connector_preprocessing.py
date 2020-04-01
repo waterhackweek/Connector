@@ -3,7 +3,7 @@ from github import Github
 import pandas as pd
 import networkx as nx
 from fuzzywuzzy import fuzz
-
+import pickle
 
 HS_USERNAME = ""
 HS_PASSWORD = ""
@@ -158,6 +158,11 @@ create_journal_edges(author_map, list_of_journals)
 create_github_edges(author_map)
 create_hydroshare_edges(hs, author_map)
 neighbor_map, edges_map = create_neighborhood_map(author_map)
+
+# load the github username mapping pickle from OneDrive
+with open('username_mapping.pickle', 'rb') as handle:
+    username_mapping = pickle.load(handle)
+
 key_list = []
 for key in neighbor_map.keys():
     key_list.append(key)
