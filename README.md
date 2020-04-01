@@ -3,7 +3,7 @@
 The Freshwater Waterhackweek Connector is a tool to visualize and summarize connections between researchers in the hydrologic sciences.
 This project is currently in the planning and early development phase.
 
-Link to the demonstration [Waterhackweek 2019 visualization] (https://public.tableau.com/profile/christina.bandaragoda#!/vizhome/Freshwater_Connector_2019_prototype/Sheet1) on the University of Washington Freshwater website
+Link to the demonstration [Waterhackweek 2019 visualization](https://public.tableau.com/profile/christina.bandaragoda#!/vizhome/Freshwater_Connector_2019_prototype/Sheet1) on the University of Washington Freshwater website
 
 To run the python code or explore the visualization with NetworkX, click on the badge to launch the Binder software environment.
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/waterhackweek/Connector/master)
