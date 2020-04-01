@@ -1,9 +1,12 @@
 # Connector
 
 The Freshwater Waterhackweek Connector is a tool to visualize and summarize connections between researchers in the hydrologic sciences.
-
 This project is currently in the planning and early development phase.
-Link to the [visualization](https://public.tableau.com/profile/christina.bandaragoda#!/vizhome/Freshwater_Connector_2019_prototype/Sheet1)
+
+Link to the demonstration [Waterhackweek 2019 visualization](https://public.tableau.com/profile/christina.bandaragoda#!/vizhome/Freshwater_Connector_2019_prototype/Sheet1) on the University of Washington Freshwater website
+
+To run the python code or explore the visualization with NetworkX, click on the badge to launch the Binder software environment.
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/waterhackweek/Connector/master)
 
 ## Big picture
 
@@ -11,16 +14,16 @@ The ultimate goal is to produce an interactive network visualization of freshwat
 
 The ERC-citations tool uses a bibtex file input to construct the network. There are positives and negatives to using this approach.
 
-### Positives
+### What works 
 
-- standardized format
+- standardized format for Collaborations as a digital object
 - can be easily obtained from ORCID
 - if web resources like GitHub and Hydroshare have a DOI, then it is easy to include in bibtex
 
-### Negatives
+### Known Issues
 
 - any resources that *don't* have an easy bibtex form will have to be translated programmatically to bibtex, which could be difficult to standardize
-- makes it more complicated to include entities like "Waterhackweek" as centralized nodes
+- it is complicated to include entities like "Waterhackweek" as centralized nodes
 
 ## Data
 
@@ -33,7 +36,7 @@ Users' information will be captured through some channel (online form, Waterhack
 
 This information will be procured using the respective APIs for Github and Hydroshare, and by parsing through the bibtex file containing journal and paper publications of the WHW participants.
 
-## Issues
+## We welcome feedback in our Github Issues 
 Any feedback on the Connector is welcome!
 Please post your review on the connector as a Github Issue in the following Q/A format:
 
@@ -43,7 +46,7 @@ Is the visualization intuitive ? Can you interact with all the individual elemen
 
 - Question 2
 
-Is there something that is not working ?
+Is there anything that is not working as expected?
 
 - Question 3
 
@@ -78,19 +81,23 @@ HydroShare also has an API and a [Python client](https://hs-restclient.readthedo
 
 Most of the paper and journal publications are present in the form of bibtex files, which can be easily parsed using the [Bibtexparser](https://bibtexparser.readthedocs.io/en/master/). 
 
-## Run the Connector (for Waterhackweek Participants Organization)
+## New Developers: 
 
-1. 
+1.  Fork, clone, branch  
+
 > git clone https://github.com/waterhackweek/Connector.git
 
-2. 
-Github Profile
-Settings/Developer Settings/Personal Access Token 
+2. You will need a token authorizing your access to the Github repository where you are accessing user data. 
+
+Go to Github Profile. Click through Settings/Developer Settings/Personal Access Token.
+
 Select Scope by checking repo: Full control of private repositories
+
 Generate token
+
 Copy token to file to a safe place NOT in Github directory
 
-3. HydroShare UserID and Password
+3. You will need the HydroShare UserID and Password and Ownership Access to the Group 
 
 
 ## Database
