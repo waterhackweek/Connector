@@ -8,7 +8,7 @@
     {
       "login": "christinab",
       "name": "Christina Bandaragoda",
-      "avatar_url": "https://avatars0.githubusercontent.com/u/8923832?v=4",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/4108369?v=4",
       "profile": "https://github.com/christinab",
       "contributions": [
         "code",
@@ -39,15 +39,7 @@
         "ideas"
       ]
     },
-    {
-      "login": "nsf-open",
-      "name": "National Science Foundation",
-      "avatar_url": "https://avatars3.githubusercontent.com/u/23663503?v=4",
-      "profile": "https://nsf.gov/",
-      "contributions": [
-        "financial"
-      ]
-    },
+    ,
     {
       "login": "deppen8",
       "name": "Jacob Deppen",
@@ -57,6 +49,15 @@
         "ideas",
         "doc",
         "code"
+      ]
+    }
+    {
+      "login": "nsf-open",
+      "name": "National Science Foundation",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/23663503?v=4",
+      "profile": "https://nsf.gov/",
+      "contributions": [
+        "financial"
       ]
     }
   ],
