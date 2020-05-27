@@ -1,6 +1,6 @@
 # Connector
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 The Freshwater Waterhackweek Connector is a tool to visualize and summarize connections between researchers in the hydrologic sciences.
@@ -121,6 +121,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
+    <td align="center"><a href="https://github.com/christinab"><img src="https://avatars0.githubusercontent.com/u/8923832?v=4" width="100px;" alt=""/><br /><sub><b>Christina Bandaragoda</b></sub></a><br /><a href="https://github.com/waterhackweek/Connector/commits?author=christinab" title="Code">💻</a> <a href="https://github.com/waterhackweek/Connector/commits?author=christinab" title="Documentation">📖</a> <a href="#ideas-christinab" title="Ideas, Planning, & Feedback">🤔</a> <a href="#fundingFinding-christinab" title="Funding, Grant Finding">🔍</a></td> <a href="#projectManagement-christinab" title="Project Management">📆</a></td>
     <td align="center"><a href="https://github.com/madhasri"><img src="https://avatars0.githubusercontent.com/u/8923832?v=4" width="100px;" alt=""/><br /><sub><b>Madhavi Srinivasan</b></sub></a><br /><a href="https://github.com/waterhackweek/Connector/commits?author=madhasri" title="Code">💻</a> <a href="https://github.com/waterhackweek/Connector/commits?author=madhasri" title="Documentation">📖</a> <a href="#ideas-madhasri" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://github.com/Castronova"><img src="https://avatars3.githubusercontent.com/u/4822372?v=4" width="100px;" alt=""/><br /><sub><b>Tony Castronova</b></sub></a><br /><a href="#ideas-Castronova" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://nsf.gov/"><img src="https://avatars3.githubusercontent.com/u/23663503?v=4" width="100px;" alt=""/><br /><sub><b>National Science Foundation</b></sub></a><br /><a href="#financial-nsf-open" title="Financial">💵</a></td>
