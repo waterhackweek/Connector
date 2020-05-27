@@ -1,6 +1,6 @@
 # Connector
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 The Freshwater Waterhackweek Connector is a tool to visualize and summarize connections between researchers in the hydrologic sciences.
@@ -122,7 +122,6 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/madhasri"><img src="https://avatars0.githubusercontent.com/u/8923832?v=4" width="100px;" alt=""/><br /><sub><b>Madhavi Srinivasan</b></sub></a><br /><a href="https://github.com/waterhackweek/Connector/commits?author=madhasri" title="Code">💻</a> <a href="https://github.com/waterhackweek/Connector/commits?author=madhasri" title="Documentation">📖</a> <a href="#ideas-madhasri" title="Ideas, Planning, & Feedback">🤔</a></td>
-    <td align="center"><a href="https://national.github.io"><img src="https://avatars2.githubusercontent.com/u/42492957?v=4" width="100px;" alt=""/><br /><sub><b>National</b></sub></a><br /><a href="#financial-National" title="Financial">💵</a></td>
   </tr>
 </table>
 

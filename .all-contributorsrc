@@ -15,15 +15,6 @@
         "doc",
         "ideas"
       ]
-    },
-    {
-      "login": "National",
-      "name": "National",
-      "avatar_url": "https://avatars2.githubusercontent.com/u/42492957?v=4",
-      "profile": "https://national.github.io",
-      "contributions": [
-        "financial"
-      ]
     }
   ],
   "contributorsPerLine": 7,
