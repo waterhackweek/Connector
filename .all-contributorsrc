@@ -16,22 +16,6 @@
         "ideas"
       ]
     },
-    {
-      "login": "ChristinaB",
-      "name": "Christina Bandaragoda",
-      "avatar_url": "https://avatars3.githubusercontent.com/u/4108369?v=4",
-      "profile": "https://github.com/ChristinaB",
-      "contributions": [
-        "code",
-        "doc",
-        "review",
-        "projectManagement",
-        "fundingFinding",
-        "eventOrganizing",
-        "example"
-      ]
-    }
-  ],
   "contributorsPerLine": 7,
   "projectName": "Connector",
   "projectOwner": "waterhackweek",

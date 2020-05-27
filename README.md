@@ -122,7 +122,6 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/madhasri"><img src="https://avatars0.githubusercontent.com/u/8923832?v=4" width="100px;" alt=""/><br /><sub><b>Madhavi Srinivasan</b></sub></a><br /><a href="https://github.com/waterhackweek/Connector/commits?author=madhasri" title="Code">💻</a> <a href="https://github.com/waterhackweek/Connector/commits?author=madhasri" title="Documentation">📖</a> <a href="#ideas-madhasri" title="Ideas, Planning, & Feedback">🤔</a></td>
-    <td align="center"><a href="https://github.com/ChristinaB"><img src="https://avatars3.githubusercontent.com/u/4108369?v=4" width="100px;" alt=""/><br /><sub><b>Christina Bandaragoda</b></sub></a><br /><a href="https://github.com/waterhackweek/Connector/commits?author=ChristinaB" title="Code">💻</a> <a href="https://github.com/waterhackweek/Connector/commits?author=ChristinaB" title="Documentation">📖</a> <a href="https://github.com/waterhackweek/Connector/pulls?q=is%3Apr+reviewed-by%3AChristinaB" title="Reviewed Pull Requests">👀</a> <a href="#projectManagement-ChristinaB" title="Project Management">📆</a> <a href="#fundingFinding-ChristinaB" title="Funding Finding">🔍</a> <a href="#eventOrganizing-ChristinaB" title="Event Organizing">📋</a> <a href="#example-ChristinaB" title="Examples">💡</a></td>
   </tr>
 </table>
 
