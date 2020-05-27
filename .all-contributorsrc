@@ -15,6 +15,15 @@
         "doc",
         "ideas"
       ]
+    },
+    {
+      "login": "Castronova",
+      "name": "Tony Castronova",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/4822372?v=4",
+      "profile": "https://github.com/Castronova",
+      "contributions": [
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,
