@@ -24,6 +24,15 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "nsf-open",
+      "name": "National Science Foundation",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/23663503?v=4",
+      "profile": "https://nsf.gov/",
+      "contributions": [
+        "financial"
+      ]
     }
   ],
   "contributorsPerLine": 7,
