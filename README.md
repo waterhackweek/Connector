@@ -1,4 +1,7 @@
 # Connector
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 The Freshwater Waterhackweek Connector is a tool to visualize and summarize connections between researchers in the hydrologic sciences.
 This project is currently in the planning and early development phase.
@@ -108,3 +111,22 @@ Currently, the data generated for the visualization in Tableau consists of the f
 WHW_XY (Person, X-coordinate, Y-coordinate)
 WHW_edge_collabs (Person1, Person2, Link, Collaboration)
 ```
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/madhasri"><img src="https://avatars0.githubusercontent.com/u/8923832?v=4" width="100px;" alt=""/><br /><sub><b>Madhavi Srinivasan</b></sub></a><br /><a href="https://github.com/waterhackweek/Connector/commits?author=madhasri" title="Code">💻</a> <a href="https://github.com/waterhackweek/Connector/commits?author=madhasri" title="Documentation">📖</a> <a href="#ideas-madhasri" title="Ideas, Planning, & Feedback">🤔</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
